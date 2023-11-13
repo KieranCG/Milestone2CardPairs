@@ -19,22 +19,22 @@ class MemoryMatrix {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true; // To stop players interacting when an animation is playing, or when a pair has already been chosen.
-    }
+    };
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
         }
-    }
+    };
     canFlipCard(card) {
         return true;
-    }
+    };
 };
 
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    let game = new MemoryMatrix(100, cards);
+    
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
@@ -44,10 +44,10 @@ function ready() {
     });
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            game.flipCard(card);
+            //game.flipCard(card);
         });
     });
-}
+};
 
 // Intial test for Jest Environment
 function sum(a, b) {
