@@ -3,7 +3,7 @@
  */
 
 const { sum, ready } = require('../game');
-
+//Baseline test for peace of mind.
 test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
 });
