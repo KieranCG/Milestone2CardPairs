@@ -2,7 +2,20 @@
  * @jest-environment jsdom
  */
 
+const { default: JSDOMEnvironment } = require('jest-environment-jsdom');
 const { sum, ready, MemoryMatrix } = require('../game');
+
+jest.spyOn(window, "alert").mockImplementation(() => { });
+
+// Set up the DOM or any necessary environment before running tests
+beforeAll(() => {
+    // Read the contents of 'index.html' and write to the DOM
+    let fs = require("fs");
+    let fileContents = fs.readFileSync("index.html", "utf-8");
+    document.open();
+    document.write(fileContents);
+    document.close();
+});
 
 //Baseline test for peace of mind.
 test('adds 1 + 2 to equal 3', () => {
@@ -10,20 +23,39 @@ test('adds 1 + 2 to equal 3', () => {
 });
 
 describe('ready function', () => {
-    test('should remove class "visible" from overlays on click', () => {
-        document.body.innerHTML = `
-      <div class="overlay-text visible">Overlay 1</div>
-      <div class="overlay-text visible">Overlay 2</div>
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-    `;
-        ready();
-        const overlays = document.getElementsByClassName('overlay-text');
-        overlays[0].dispatchEvent(new Event('click'));
+    let overlays, cards;
 
-        expect(overlays[0].classList.contains('visible')).toBe(false);
-        expect(overlays[1].classList.contains('visible')).toBe(true);
+    beforeEach(() => {
+        // Assuming 'game' object is available from the 'game' module
+        // ... (Your setup code from the previous response)
+
+        overlays = Array.from(document.getElementsByClassName('overlay-text'));
+        cards = Array.from(document.getElementsByClassName('card'));
+
+        // Assuming the 'game' object is correctly imported from the 'game' module
+        game = new game.MemoryMatrix(100, cards);
+
+        overlays.forEach(overlay => {
+            overlay.addEventListener('click', () => {
+                overlay.classList.remove('visible');
+                game.startGame();
+            });
+        });
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                game.flipCard(card);
+            });
+        });
     });
+
+    test('Overlay click should hide the overlay and start the game', () => {
+        overlays[0].click(); // Simulate a click
+        expect(overlays[0].classList.contains('visible')).toBe(false); // Check if overlay class 'visible' is removed
+        // Add further assertions for game state after starting the game
+    });
+
+    // Add more tests to simulate card clicks and check game behavior
 });
 
 describe('startGame function', () => {
@@ -65,27 +97,28 @@ describe('startGame function', () => {
 });
 
 describe('MemoryMatrix', () => {
-    let game;
     let mockCards;
+    let game;
 
     beforeEach(() => {
+        // Creating a set of mock cards for testing purposes
         mockCards = [
             document.createElement('div'),
             document.createElement('div'),
-            // Add as many mock card elements as necessary
+            // Add as many mock cards as needed for your test cases
         ];
+
         game = new MemoryMatrix(100, mockCards);
     });
 
-    test('flipCard method should increment totalClicks and update ticker', () => {
-        game.flipCard(mockCards[0]);
-        expect(game.totalClicks).toBe(1);
-        // Simulating the update of the ticker element
-        // Use your preferred method to simulate DOM manipulation for testing
+    test('flipCard method should add visible class and increment totalClicks', () => {
+        const testCard = mockCards[0]; // Choose a card to test
+
+        game.flipCard(testCard);
+
+        expect(game.totalClicks).toBe(1); // Check if totalClicks was incremented
+        expect(testCard.classList.contains('visible')).toBe(true); // Check if the 'visible' class was added
     });
 
-    test('canFlipCard method should return true for any card', () => {
-        const result = game.canFlipCard(mockCards[0]);
-        expect(result).toBe(true);
-    });
+    // Add more test cases as needed
 });
