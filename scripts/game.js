@@ -14,7 +14,7 @@ class MemoryMatrix {
         this.ticker = document.getElementById('flips');
     }
     startGame() {
-        this.cardToCheck = null; 
+        this.cardToCheck = null;
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
@@ -42,4 +42,4 @@ function ready() {
 function sum(a, b) {
     return a + b;
 }
-module.exports = { sum, ready };
+module.exports = { sum, ready, MemoryMatrix };
