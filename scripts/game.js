@@ -12,6 +12,7 @@ function ready() {
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
+            // game.startGame();
         });
     });
 }
@@ -20,4 +21,4 @@ function ready() {
 function sum(a, b) {
     return a + b;
 }
-module.exports = sum;
+module.exports = { sum, ready };
