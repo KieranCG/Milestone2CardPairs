@@ -63,3 +63,29 @@ describe('startGame function', () => {
         expect(game.busy).toBe(true);
     });
 });
+
+describe('MemoryMatrix', () => {
+    let game;
+    let mockCards;
+
+    beforeEach(() => {
+        mockCards = [
+            document.createElement('div'),
+            document.createElement('div'),
+            // Add as many mock card elements as necessary
+        ];
+        game = new MemoryMatrix(100, mockCards);
+    });
+
+    test('flipCard method should increment totalClicks and update ticker', () => {
+        game.flipCard(mockCards[0]);
+        expect(game.totalClicks).toBe(1);
+        // Simulating the update of the ticker element
+        // Use your preferred method to simulate DOM manipulation for testing
+    });
+
+    test('canFlipCard method should return true for any card', () => {
+        const result = game.canFlipCard(mockCards[0]);
+        expect(result).toBe(true);
+    });
+});

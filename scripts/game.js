@@ -1,10 +1,3 @@
-// To allow the overlay to work the javascript needs to load at the same time.
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ready());
-} else {
-    ready();
-}
-
 class MemoryMatrix {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
@@ -24,17 +17,25 @@ class MemoryMatrix {
         if (this.canFlipCard(card)) {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
-        }
+            card.classList.add('visible');
+        };
     };
     canFlipCard(card) {
         return true;
     };
 };
 
+// To allow the overlay to work the javascript needs to load at the same time.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ready());
+} else {
+    ready();
+};
+
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
-    
+    let game = new MemoryMatrix(100, cards);
 
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
@@ -42,9 +43,10 @@ function ready() {
             game.startGame();
         });
     });
+
     cards.forEach(card => {
         card.addEventListener('click', () => {
-            //game.flipCard(card);
+            game.flipCard(card);
         });
     });
 };
