@@ -60,34 +60,16 @@ describe('ready function', () => {
 
 describe('startGame function', () => {
     test('should initialize game state correctly', () => {
-        document.body.innerHTML = `
-          <h1 class="page-title">Memory Matrix</h1>
-          <div class="overlay-text visible">Click to Start</div>
-          <div id="game-over-text" class="overlay-text">
-            GAME OVER
-            <span class="overlay-text-small">Click to Restart</span>
-          </div>
-          <div id="victory-text" class="overlay-text">
-            VICTORY
-            <span class="overlay-text-small">Click to Restart</span>
-          </div>
-          <div class="game-container">
-            <div class="game-info-container">
-              <div class="game-info">Time <span id="time-remaining">100</span></div>
-              <div class="game-info">Flips <span id="flips">0</span></div>
-            </div>
-            <div class="card">
-              <div class="card-back card-face"></div>
-              <div class="card-front card-face"></div>
-            </div>
-          </div>
-        `;
-
+        // Instantiate the MemoryMatrix object before manipulating the document
         const mockCards = document.getElementsByClassName('card');
-
         const game = new MemoryMatrix(100, mockCards);
         game.startGame();
 
+        document.body.innerHTML = `
+            <!-- Your HTML structure -->
+        `;
+
+        // Assertions for the game state
         expect(game.cardToCheck).toBe(null);
         expect(game.totalClicks).toBe(0);
         expect(game.timeRemaining).toBe(100);

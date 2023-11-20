@@ -12,6 +12,8 @@ class MemoryMatrix {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true; // To stop players interacting when an animation is playing, or when a pair has already been chosen.
+
+        this.shuffleCards();
     };
     flipCard(card) {
         if (this.canFlipCard(card)) {
@@ -20,6 +22,15 @@ class MemoryMatrix {
             card.classList.add('visible');
         };
     };
+    //Fisher Yates Shuffle
+    shuffleCards(cardsArray) {
+        for (let i = cardsArray.length - 1; i > 0; i--) {
+            let randIndex = Math.floor(Math.random() * (i + 1));
+            cardsArray[randIndex].style.order = i;
+            cardsArray[i].style.order = randIndex;
+        }
+    }
+
     canFlipCard(card) {
         return true;
     };

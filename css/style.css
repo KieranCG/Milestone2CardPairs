@@ -79,11 +79,6 @@ body {
     transform: rotateY(0);
 }
 
-.card-face:hover .cob-web {
-    width: 52px;
-    height: 52px;
-}
-
 .card-value {
     position: relative;
     transition: transform 100ms ease-in-out;
