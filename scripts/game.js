@@ -13,7 +13,7 @@ class MemoryMatrix {
         this.matchedCards = [];
         this.busy = true; // To stop players interacting when an animation is playing, or when a pair has already been chosen.
         setTimeout(() => {
-            this.shuffleCards();
+            this.shuffleCards(this.cardsArray);
             this.countDown = this.startCountdown();
             this.busy = false;
         }, 500);
@@ -44,20 +44,22 @@ class MemoryMatrix {
             this.cardMatch(card, this.cardToCheck);
         else
             this.MisMatch(card, this.cardToCheck);
+        this.cardToCheck = null;
     }
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
         card2.classList.add('matched');
-        if (this.matchedCards.length === this.cardsArray)
+        if (this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
-    cardMisMatch(card) {
+    cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
             card2.classList.remove('visible');
+            this.busy = false;
         }, 1000);
     }
     getCardType(card) {
@@ -93,7 +95,7 @@ class MemoryMatrix {
     }
 
     canFlipCard(card) {
-        return true;
+        return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     };
 };
 
