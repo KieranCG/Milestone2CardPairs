@@ -43,9 +43,10 @@ class MemoryMatrix {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
         else
-            this.MisMatch(card, this.cardToCheck);
+            this.cardMisMatch(card, this.cardToCheck);
         this.cardToCheck = null;
     }
+
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
@@ -63,8 +64,9 @@ class MemoryMatrix {
         }, 1000);
     }
     getCardType(card) {
-        return card.getElementsByClassName('card-value')[0].style;
+        return card.querySelector('.card-front').style.backgroundColor;
     }
+
 
     startCountdown() {
         return setInterval(() => {
