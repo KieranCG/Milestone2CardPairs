@@ -14,7 +14,7 @@ class MemoryMatrix {
         this.busy = true; // To stop players interacting when an animation is playing, or when a pair has already been chosen.
         setTimeout(() => {
             this.shuffleCards(this.cardsArray);
-            this.countDown = this.startCountdown();
+            this.countdown = this.startCountdown();
             this.busy = false;
         }, 500);
         this.hideCards();
@@ -78,12 +78,11 @@ class MemoryMatrix {
     }
 
     gameOver() {
-        clearInterval(this.countDown);
+        clearInterval(this.countdown);
         document.getElementById('game-over-text').classList.add('visible');
     }
     victory() {
-        clearInterval(this.countDown);
-        this.audioController.victory();
+        clearInterval(this.countdown);
         document.getElementById('victory-text').classList.add('visible');
     }
 
