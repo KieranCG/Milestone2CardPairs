@@ -166,8 +166,6 @@ function ready() {
     });
 }
 
-import { createClient } from 'pexels';
-
 const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
 
 // All requests made with the client will be authenticated
