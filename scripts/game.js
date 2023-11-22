@@ -126,6 +126,19 @@ function ready() {
     });
 }
 
+const PexelsAPI = require('pexels-api-wrapper');
+const pexelsClient = new PexelsAPI('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
+
+// Test
+pexelsClient.getPopularPhotos(1, 10)
+    .then(result => {
+        console.log(result.photos);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
+
 // Intial test for Jest Environment
 function sum(a, b) {
     return a + b;
