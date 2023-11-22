@@ -166,8 +166,12 @@ const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I
 // All requests made with the client will be authenticated
 const query = 'Tigers';
 
-// The variable name should be 'pexelsClient' instead of 'client'
-pexelsClient.photos.search({ query, per_page: 1 }).then(photos => {...});
+pexelsClient.photos.search({ query, per_page: 1 }).then(photos => {
+    console.log(photos);
+  }).catch(error => {
+    console.error('Error fetching photos:', error);
+  });
+  
 
 
 
