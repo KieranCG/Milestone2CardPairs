@@ -11,16 +11,30 @@ class MemoryMatrix {
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
-        this.busy = true; // To stop players interacting when an animation is playing, or when a pair has already been chosen.
-        setTimeout(() => {
-            this.shuffleCards(this.cardsArray);
-            this.countdown = this.startCountdown();
-            this.busy = false;
-        }, 500);
-        this.hideCards();
-        this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks;
-    };
+        this.busy = true;
+
+        // Fetch images from the API
+        this.fetchImages().then(images => {
+            // Duplicate each image to create matching pairs
+            const pairedImages = images.concat(images);
+
+            // Shuffle the paired images
+            this.shuffleCards(pairedImages);
+
+            // Update card backgrounds with shuffled images
+            this.updateCardBackgrounds(pairedImages);
+
+            setTimeout(() => {
+                this.shuffleCards(this.cardsArray);
+                this.countdown = this.startCountdown();
+                this.busy = false;
+            }, 500);
+
+            this.hideCards();
+            this.timer.innerText = this.timeRemaining;
+            this.ticker.innerText = this.totalClicks;
+        });
+    }
     hideCards() {
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
@@ -98,6 +112,25 @@ class MemoryMatrix {
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     };
+
+    fetchImages() {
+        const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
+        const query = 'Nature';
+
+        return pexelsClient.photos.search({ query, per_page: 10 })
+            .then(photos => photos.map(photo => photo.src.large))
+            .catch(error => {
+                console.error('Error fetching images:', error);
+                return [];
+            });
+    }
+
+    updateCardBackgrounds(images) {
+        this.cardsArray.forEach((card, index) => {
+            const cardFront = card.querySelector('.card-front');
+            cardFront.style.backgroundImage = `url(${images[index]})`;
+        });
+    }
 };
 
 // To allow the overlay to work the javascript needs to load at the same time.
@@ -133,19 +166,12 @@ const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I
 // All requests made with the client will be authenticated
 const query = 'Tigers';
 
-client.photos.search({ query, per_page: 1 }).then(photos => {...});
+// The variable name should be 'pexelsClient' instead of 'client'
+pexelsClient.photos.search({ query, per_page: 1 }).then(photos => {...});
+
 
 
 const PexelsAPI = require('pexels-api-wrapper');
-
-// Test
-pexelsClient.getPopularPhotos(1, 10)
-    .then(result => {
-        console.log(result.photos);
-    })
-    .catch(error => {
-        console.error(error);
-    });
 
 
 // Intial test for Jest Environment

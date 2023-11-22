@@ -7,6 +7,7 @@
         "test": "jest"
     },
     "dependencies": {
-        "pexels": "^1.4.0"
+        "pexels": "^1.4.0",
+        "pexels-api-wrapper": "^1.1.2"
     }
 }
