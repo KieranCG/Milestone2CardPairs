@@ -15,6 +15,9 @@ class MemoryMatrix {
 
         // Fetch images from the API
         this.fetchImages().then(images => {
+            // Handle the fetched images here
+            console.log(images);
+
             // Duplicate each image to create matching pairs
             const pairedImages = images.concat(images);
 
@@ -34,6 +37,7 @@ class MemoryMatrix {
             this.timer.innerText = this.timeRemaining;
             this.ticker.innerText = this.totalClicks;
         });
+
     }
     hideCards() {
         this.cardsArray.forEach(card => {
@@ -113,17 +117,20 @@ class MemoryMatrix {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     };
 
-    fetchImages() {
+    async fetchImages() {
         const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
         const query = 'Nature';
 
-        return pexelsClient.photos.search({ query, per_page: 10 })
-            .then(photos => photos.map(photo => photo.src.large))
-            .catch(error => {
-                console.error('Error fetching images:', error);
-                return [];
-            });
+        try {
+            const response = await pexelsClient.photos.search({ query, per_page: 10 });
+            const photos = response.photos.map(photo => photo.src.large);
+            return photos;
+        } catch (error) {
+            console.error('Error fetching images:', error);
+            return [];
+        }
     }
+
 
     updateCardBackgrounds(images) {
         this.cardsArray.forEach((card, index) => {
@@ -168,10 +175,10 @@ const query = 'Tigers';
 
 pexelsClient.photos.search({ query, per_page: 1 }).then(photos => {
     console.log(photos);
-  }).catch(error => {
+}).catch(error => {
     console.error('Error fetching photos:', error);
-  });
-  
+});
+
 
 
 
