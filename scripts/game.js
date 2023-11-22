@@ -1,3 +1,6 @@
+import { createClient } from 'pexels';
+
+
 class MemoryMatrix {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
