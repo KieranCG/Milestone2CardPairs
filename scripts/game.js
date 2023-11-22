@@ -126,8 +126,17 @@ function ready() {
     });
 }
 
+import { createClient } from 'pexels';
+
+const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
+
+// All requests made with the client will be authenticated
+const query = 'Tigers';
+
+client.photos.search({ query, per_page: 1 }).then(photos => {...});
+
+
 const PexelsAPI = require('pexels-api-wrapper');
-const pexelsClient = new PexelsAPI('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
 
 // Test
 pexelsClient.getPopularPhotos(1, 10)
