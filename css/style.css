@@ -1,3 +1,4 @@
+/* Global styling */
 * {
     box-sizing: border-box;
 }
@@ -8,9 +9,11 @@ html {
 
 body {
     margin: 0;
-    background: lightblue;
+    background: linear-gradient(135deg, #3494e6, #ec6ead);
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Page title styling */
 .page-title {
     color: #FF6D00;
     font-family: serif;
@@ -19,17 +22,30 @@ body {
     font-size: 6em;
 }
 
+.page-title,
+.game-info {
+    color: #ff00ff; /* Neon Pink */
+}
+
+.overlay-text {
+    color: #00ffff; /* Cyan */
+}
+
+
+/* Game info container */
 .game-info-container {
     grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
 }
 
+/* Individual game info styling */
 .game-info {
     color: #FFBB89;
     font-size: 4em;
 }
 
+/* Game container layout */
 .game-container {
     margin: 50px auto;
     display: grid;
@@ -39,13 +55,16 @@ body {
     perspective: 500px;
 }
 
+/* Styling for individual cards */
 .card {
     position: relative;
     cursor: url(), auto;
     height: 175px;
     width: 125px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for card faces and animations */
 .card-face {
     position: absolute;
     display: flex;
@@ -61,40 +80,48 @@ body {
     backface-visibility: hidden;
 }
 
+/* Flipping animation for visible card backs */
 .card.visible .card-back {
     transform: rotateY(-180deg);
 }
 
+/* Flipping animation for visible card fronts */
 .card.visible .card-front {
     transform: rotateY(0);
 }
 
+/* Animation for matched card fronts */
 .card.matched .card-front .card-value {
     animation: dance 1s linear infinite 500ms;
 }
 
+/* Styling for card backs */
 .card-back {
     background-color: black;
     border-color: #FF6D00;
     transform: rotateY(0);
 }
 
+/* Styling for individual card values */
 .card-value {
     position: relative;
     transition: transform 100ms ease-in-out;
     transform: scale(.9);
 }
 
+/* Hover effect for card values */
 .card-front:hover .card-value {
     transform: scale(1);
 }
 
+/* Styling for card fronts */
 .card-front {
     background-color: #FFBB89;
     border-color: #333;
     transform: rotateY(180deg);
 }
 
+/* Styling for overlay text */
 .overlay-text {
     top: 0;
     left: 0;
@@ -111,19 +138,20 @@ body {
     transition: background-color 500ms, font-size 500ms;
 }
 
+/* Styling for small overlay text */
 .overlay-text-small {
     font-size: .3em;
 }
 
+/* Animation for overlay text visibility */
 .overlay-text.visible {
     display: flex;
     animation: overlay-grow 500ms forwards;
 }
 
+/* Dance animation for matched cards */
 @keyframes dance {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: rotate(0)
     }
 
@@ -136,6 +164,7 @@ body {
     }
 }
 
+/* Overlay grow animation */
 @keyframes overlay-grow {
     from {
         background-color: rgba(0, 0, 0, 0);
@@ -148,6 +177,7 @@ body {
     }
 }
 
+/* Media query for smaller screens */
 @media (max-width: 600px) {
     .game-container {
         grid-template-columns: repeat(2, auto)
@@ -159,6 +189,7 @@ body {
     }
 }
 
+/* Styling for Pexels logo */
 .pexels-logo img {
     height: 50px;
-  }  
+}
