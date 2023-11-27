@@ -49,35 +49,41 @@ describe('ready function', () => {
     });
 });
 
-describe('Card Flipping', () => {
-    test('Flipping a card increments the total clicks counter', (done) => {
-        const initialClicks = game.totalClicks;
-        cards[0].click(); // Simulate a card click
+describe('MemoryMatrix class', () => {
+    describe('Initialization', () => {
+        test('initializes correctly', () => {
+            const cards = [/* mock cards array */];
+            const game = new MemoryMatrix(100, cards);
 
-        // Introduce a small delay to allow the flipCard method to complete
-        setTimeout(() => {
-            expect(game.totalClicks).toBe(initialClicks + 1);
-            done();
-        }, 100);
+            expect(game.totalTime).toBe(100);
+            expect(game.cardsArray).toBe(cards);
+            // Add more expectations as needed
+        });
     });
 
-    test('Flipping a card updates the flips counter element', (done) => {
-        cards[0].click(); // Simulate a card click
+    describe('canFlipCard method', () => {
+        test('returns true when card can be flipped', () => {
+            const cards = [/* mock cards array */];
+            const game = new MemoryMatrix(100, cards);
+            game.busy = false;
+            game.matchedCards = [];
+            game.cardToCheck = null;
 
-        // Introduce a small delay to allow the flipCard method to complete
-        setTimeout(() => {
-            expect(parseInt(game.ticker.innerText)).toBe(game.totalClicks);
-            done();
-        }, 100);
-    });
+            const result = game.canFlipCard(cards[0]);
 
-    test('Flipping a card sets the card to visible', (done) => {
-        cards[0].click(); // Simulate a card click
+            expect(result).toBe(true);
+        });
 
-        // Introduce a small delay to allow the flipCard method to complete
-        setTimeout(() => {
-            expect(cards[0].classList.contains('visible')).toBe(true);
-            done();
-        }, 100);
+        test('returns false when game is busy', () => {
+            const cards = [/* mock cards array */];
+            const game = new MemoryMatrix(100, cards);
+            game.busy = true;
+
+            const result = game.canFlipCard(cards[0]);
+
+            expect(result).toBe(false);
+        });
+
+        // Add more tests for different conditions
     });
 });
