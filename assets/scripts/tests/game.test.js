@@ -4,10 +4,10 @@
 
 const { sum, ready, MemoryMatrix } = require('../game');
 
-// Declare variables outside beforeEach for access in other tests
+// Declare variables
 let overlays, cards, game;
 
-// Set up the DOM or any necessary environment before running tests
+// Set up the DOM
 beforeAll(() => {
     // Read the contents of 'index.html' and write to the DOM
     let fs = require("fs");
@@ -57,7 +57,6 @@ describe('MemoryMatrix class', () => {
 
             expect(game.totalTime).toBe(100);
             expect(game.cardsArray).toBe(cards);
-            // Add more expectations as needed
         });
     });
 
@@ -83,7 +82,5 @@ describe('MemoryMatrix class', () => {
 
             expect(result).toBe(false);
         });
-
-        // Add more tests for different conditions
     });
 });
