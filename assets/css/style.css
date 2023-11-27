@@ -16,12 +16,15 @@ body {
 /* Page title styling */
 .page-title {
     color: #FF6D00;
-    font-family: serif;
+    font-family: 'Roboto', sans-serif;
+    /* Consistent font style */
     font-weight: normal;
     text-align: center;
     font-size: 6em;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
     /* Neon text effect */
+    /* Add a subtle pulse animation to the game title */
+    animation: pulse 2s infinite;
 }
 
 .page-title,
@@ -76,6 +79,12 @@ body {
     width: 125px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.5);
     /* Glowing borders */
+    /* Add a glowing effect to the cards on hover */
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
 }
 
 /* Styling for card faces and animations */
@@ -148,7 +157,8 @@ body {
     align-items: center;
     flex-direction: column;
     color: #FF6D00;
-    font-family: serif;
+    font-family: 'Roboto', sans-serif;
+    /* Consistent font style */
     transition: background-color 500ms, font-size 500ms;
 }
 
@@ -205,22 +215,15 @@ body {
     height: 50px;
 }
 
-/* Add a glowing effect to the cards on hover */
-.card:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
-    transition: box-shadow 0.5s ease-in-out;
+/* Styling for card fronts */
+.card-front {
+    background-color: #FFBB89;
+    border-color: #333;
+    transform: rotateY(180deg);
 }
 
-/* Add a subtle pulse animation to the game title */
-.page-title {
-    animation: pulse 2s infinite;
-}
-
-/* Add a rotating animation to the Pexels logo */
-.pexels-logo img {
-    transition: transform 1s ease-in-out;
-}
-
-.pexels-logo:hover img {
-    transform: rotate(360deg);
+/* Styling for font icons inside the cards */
+.card-front i {
+    font-size: 2em;
+    /* Adjust the size as needed */
 }
