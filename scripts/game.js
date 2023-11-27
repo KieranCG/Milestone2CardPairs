@@ -1,110 +1,37 @@
+// Define the MemoryMatrix class
 class MemoryMatrix {
+    // Constructor to initialize the game with totalTime and cards
     constructor(totalTime, cards) {
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
-        this.cardToCheck = null;
-        this.totalClicks = 0;
-        this.matchedCards = [];
-        this.busy = true;
-
-        this.setupGame();
     }
 
-    setupGame() {
-        this.shuffleCards(this.cardsArray);
-
-        setTimeout(() => {
-            this.shuffleCards(this.cardsArray);
-            this.countdown = this.startCountdown();
-            this.busy = false;
-        }, 500);
-
-        this.hideCards();
-        this.timer.innerText = this.timeRemaining;
-        this.ticker.innerText = this.totalClicks;
-        this.setupCardClickListeners();
-    }
-
+    // Method to start the game
     startGame() {
-        this.cardToCheck = null;
+        // Initialize game variables
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
+        this.cardToCheck = null;
         this.matchedCards = [];
         this.busy = true;
 
-        // Bind the flipCard method to the current instance
-        const boundFlipCard = this.flipCard.bind(this);
-
-        // Add the event listener to each card
-        this.cardsArray.forEach(card => {
-            card.addEventListener('click', boundFlipCard);
-        });
-
+        // Shuffle cards and start countdown after a delay
         setTimeout(() => {
             this.shuffleCards(this.cardsArray);
             this.countdown = this.startCountdown();
             this.busy = false;
         }, 500);
 
+        // Hide cards, update timer and click counter
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
     }
 
-
-    hideCards() {
-        this.cardsArray.forEach(card => {
-            card.classList.remove('visible');
-            card.classList.remove('matched');
-        });
-    }
-
-    flipCard(card) {
-        if (this.canFlipCard(card)) {
-            this.totalClicks++;
-            this.ticker.innerText = this.totalClicks;
-            card.classList.add('visible');
-
-            if (this.cardToCheck)
-                this.checkForCardMatch(card);
-            else
-                this.cardToCheck = card;
-        }
-    }
-
-    checkForCardMatch(card) {
-        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
-            this.cardMatch(card, this.cardToCheck);
-        else
-            this.cardMisMatch(card, this.cardToCheck);
-        this.cardToCheck = null;
-    }
-
-    cardMatch(card1, card2) {
-        this.matchedCards.push(card1);
-        this.matchedCards.push(card2);
-        card1.classList.add('matched');
-        card2.classList.add('matched');
-        if (this.matchedCards.length === this.cardsArray.length)
-            this.victory();
-    }
-
-    cardMisMatch(card1, card2) {
-        this.busy = true;
-        setTimeout(() => {
-            card1.classList.remove('visible');
-            card2.classList.remove('visible');
-            this.busy = false;
-        }, 1000);
-    }
-
-    getCardType(card) {
-        return card.querySelector('.card-front').style.backgroundColor;
-    }
-
+    // Method to start the countdown
     startCountdown() {
         return setInterval(() => {
             this.timeRemaining--;
@@ -114,16 +41,75 @@ class MemoryMatrix {
         }, 1000);
     }
 
+    // Method called when the game is over
     gameOver() {
         clearInterval(this.countdown);
         document.getElementById('game-over-text').classList.add('visible');
     }
 
+    // Method called when the player wins
     victory() {
         clearInterval(this.countdown);
         document.getElementById('victory-text').classList.add('visible');
     }
 
+    // Method to hide all cards
+    hideCards() {
+        this.cardsArray.forEach(card => {
+            card.classList.remove('visible');
+            card.classList.remove('matched');
+        });
+    }
+
+    // Method to handle card flipping
+    flipCard(card) {
+        if (this.canFlipCard(card)) {
+            this.totalClicks++;
+            this.ticker.innerText = this.totalClicks;
+            card.classList.add('visible');
+
+            // Check for a card match or mismatch
+            if (this.cardToCheck) {
+                this.checkForCardMatch(card);
+            } else {
+                this.cardToCheck = card;
+            }
+        }
+    }
+
+    // Method to check if two flipped cards match
+    checkForCardMatch(card) {
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+            this.cardMatch(card, this.cardToCheck);
+        else
+            this.cardMismatch(card, this.cardToCheck);
+
+        this.cardToCheck = null;
+    }
+
+    // Method called when two cards match
+    cardMatch(card1, card2) {
+        this.matchedCards.push(card1);
+        this.matchedCards.push(card2);
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+
+        // Check for victory if all cards are matched
+        if (this.matchedCards.length === this.cardsArray.length)
+            this.victory();
+    }
+
+    // Method called when two cards do not match
+    cardMismatch(card1, card2) {
+        this.busy = true;
+        setTimeout(() => {
+            card1.classList.remove('visible');
+            card2.classList.remove('visible');
+            this.busy = false;
+        }, 1000);
+    }
+
+    // Method to shuffle cards using Fisher-Yates Shuffle Algorithm
     shuffleCards(cardsArray) {
         for (let i = cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i + 1));
@@ -132,42 +118,49 @@ class MemoryMatrix {
         }
     }
 
+    // Method to get the background color of a card
+    getCardType(card) {
+        return card.querySelector('.card-front').style.backgroundColor;
+    }
+
+    // Method to check if a card can be flipped
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
-
-    setupCardClickListeners() {
-        this.cardsArray.forEach(card => {
-            card.addEventListener('click', () => {
-                this.flipCard(card);
-            });
-        });
-    }
 }
 
-// To allow the overlay to work the javascript needs to load at the same time.
-if (document.readyState === 'loading') {
+// Event listener to initialize the game when the DOM is loaded
+if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready);
 } else {
     ready();
 }
 
+// Function to initialize the game and set up event listeners
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MemoryMatrix(100, cards);
 
+    // Add event listeners to overlays and cards
     overlays.forEach(overlay => {
         overlay.addEventListener('click', () => {
             overlay.classList.remove('visible');
             game.startGame();
         });
     });
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            game.flipCard(card);
+        });
+    });
 }
 
-// Intial test for Jest Environment
+// Initial test for Jest Environment
 function sum(a, b) {
     return a + b;
-};
+}
 
+// Export functions and the MemoryMatrix class for testing
 module.exports = { sum, ready, MemoryMatrix };
