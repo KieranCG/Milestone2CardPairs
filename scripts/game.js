@@ -1,6 +1,3 @@
-import { createClient } from 'pexels';
-
-
 class MemoryMatrix {
     constructor(totalTime, cards) {
         this.cardsArray = cards;
@@ -8,46 +5,45 @@ class MemoryMatrix {
         this.timeRemaining = totalTime;
         this.timer = document.getElementById('time-remaining');
         this.ticker = document.getElementById('flips');
+        this.cardToCheck = null;
+        this.totalClicks = 0;
+        this.matchedCards = [];
+        this.busy = true;
+
+        this.setupGame();
     }
+
+    setupGame() {
+        this.shuffleCards(this.cardsArray);
+
+        setTimeout(() => {
+            this.shuffleCards(this.cardsArray);
+            this.countdown = this.startCountdown();
+            this.busy = false;
+        }, 500);
+
+        this.hideCards();
+        this.timer.innerText = this.timeRemaining;
+        this.ticker.innerText = this.totalClicks;
+        this.setupCardClickListeners();
+    }
+
     startGame() {
         this.cardToCheck = null;
         this.totalClicks = 0;
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-
-        // Fetch images from the API
-        this.fetchImages().then(images => {
-            // Handle the fetched images here
-            console.log(images);
-
-            // Duplicate each image to create matching pairs
-            const pairedImages = images.concat(images);
-
-            // Shuffle the paired images
-            this.shuffleCards(pairedImages);
-
-            // Update card backgrounds with shuffled images
-            this.updateCardBackgrounds(pairedImages);
-
-            setTimeout(() => {
-                this.shuffleCards(this.cardsArray);
-                this.countdown = this.startCountdown();
-                this.busy = false;
-            }, 500);
-
-            this.hideCards();
-            this.timer.innerText = this.timeRemaining;
-            this.ticker.innerText = this.totalClicks;
-        });
-
+        this.setupCardClickListeners();
     }
+
     hideCards() {
         this.cardsArray.forEach(card => {
             card.classList.remove('visible');
             card.classList.remove('matched');
         });
     }
+
     flipCard(card) {
         if (this.canFlipCard(card)) {
             this.totalClicks++;
@@ -58,8 +54,9 @@ class MemoryMatrix {
                 this.checkForCardMatch(card);
             else
                 this.cardToCheck = card;
-        };
-    };
+        }
+    }
+
     checkForCardMatch(card) {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
             this.cardMatch(card, this.cardToCheck);
@@ -76,6 +73,7 @@ class MemoryMatrix {
         if (this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
+
     cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
@@ -84,10 +82,10 @@ class MemoryMatrix {
             this.busy = false;
         }, 1000);
     }
+
     getCardType(card) {
         return card.querySelector('.card-front').style.backgroundColor;
     }
-
 
     startCountdown() {
         return setInterval(() => {
@@ -102,12 +100,12 @@ class MemoryMatrix {
         clearInterval(this.countdown);
         document.getElementById('game-over-text').classList.add('visible');
     }
+
     victory() {
         clearInterval(this.countdown);
         document.getElementById('victory-text').classList.add('visible');
     }
 
-    //Fisher Yates Shuffle
     shuffleCards(cardsArray) {
         for (let i = cardsArray.length - 1; i > 0; i--) {
             let randIndex = Math.floor(Math.random() * (i + 1));
@@ -118,30 +116,16 @@ class MemoryMatrix {
 
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
-    };
-
-    async fetchImages() {
-        const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
-        const query = 'Nature';
-
-        try {
-            const response = await pexelsClient.photos.search({ query, per_page: 10 });
-            const photos = response.photos.map(photo => photo.src.large);
-            return photos;
-        } catch (error) {
-            console.error('Error fetching images:', error);
-            return [];
-        }
     }
 
-
-    updateCardBackgrounds(images) {
-        this.cardsArray.forEach((card, index) => {
-            const cardFront = card.querySelector('.card-front');
-            cardFront.style.backgroundImage = `url(${images[index]})`;
+    setupCardClickListeners() {
+        this.cardsArray.forEach(card => {
+            card.addEventListener('click', () => {
+                this.flipCard(card);
+            });
         });
     }
-};
+}
 
 // To allow the overlay to work the javascript needs to load at the same time.
 if (document.readyState === 'loading') {
@@ -161,30 +145,7 @@ function ready() {
             game.startGame();
         });
     });
-
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            game.flipCard(card);
-        });
-    });
 }
-
-const pexelsClient = createClient('EGtI1qwcVvp5Fd17dEkpE5Y5BR5qTr0jO0qX5cLTfgt7I4TfScIXL9hM');
-
-// All requests made with the client will be authenticated
-const query = 'Tigers';
-
-pexelsClient.photos.search({ query, per_page: 1 }).then(photos => {
-    console.log(photos);
-}).catch(error => {
-    console.error('Error fetching photos:', error);
-});
-
-
-
-
-const PexelsAPI = require('pexels-api-wrapper');
-
 
 // Intial test for Jest Environment
 function sum(a, b) {
