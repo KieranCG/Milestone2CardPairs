@@ -204,3 +204,37 @@ body {
 .pexels-logo img {
     height: 50px;
 }
+
+/* Add a glowing effect to the cards on hover */
+.card:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+/* Add a subtle pulse animation to the game title */
+.page-title {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Add a rotating animation to the Pexels logo */
+.pexels-logo img {
+    transition: transform 1s ease-in-out;
+}
+
+.pexels-logo:hover img {
+    transform: rotate(360deg);
+}
