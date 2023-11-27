@@ -1,4 +1,3 @@
-// Define the MemoryMatrix class
 class MemoryMatrix {
     // Constructor to initialize the game with totalTime and cards
     constructor(totalTime, cards) {
@@ -69,7 +68,7 @@ class MemoryMatrix {
 
             // Check for a card match or mismatch
             if (this.cardToCheck) {
-                card.classList.add('visible'); // Move this line here
+                card.classList.add('visible');
                 this.checkForCardMatch(card);
             } else {
                 this.cardToCheck = card;
