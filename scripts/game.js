@@ -34,8 +34,26 @@ class MemoryMatrix {
         this.timeRemaining = this.totalTime;
         this.matchedCards = [];
         this.busy = true;
-        this.setupCardClickListeners();
+
+        // Bind the flipCard method to the current instance
+        const boundFlipCard = this.flipCard.bind(this);
+
+        // Add the event listener to each card
+        this.cardsArray.forEach(card => {
+            card.addEventListener('click', boundFlipCard);
+        });
+
+        setTimeout(() => {
+            this.shuffleCards(this.cardsArray);
+            this.countdown = this.startCountdown();
+            this.busy = false;
+        }, 500);
+
+        this.hideCards();
+        this.timer.innerText = this.timeRemaining;
+        this.ticker.innerText = this.totalClicks;
     }
+
 
     hideCards() {
         this.cardsArray.forEach(card => {
