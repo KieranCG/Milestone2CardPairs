@@ -20,17 +20,29 @@ body {
     font-weight: normal;
     text-align: center;
     font-size: 6em;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    /* Neon text effect */
 }
 
 .page-title,
-.game-info {
-    color: #ff00ff; /* Neon Pink */
+.game-info,
+.overlay-text,
+.overlay-text-small {
+    color: #ff00ff;
+    /* Neon Pink */
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    /* Neon text effect */
 }
 
+/* Overlay text consistent color */
 .overlay-text {
-    color: #00ffff; /* Cyan */
+    color: #FF6D00;
 }
 
+/* Slightly smaller font size for small overlay text */
+.overlay-text-small {
+    font-size: 0.8em;
+}
 
 /* Game info container */
 .game-info-container {
@@ -43,6 +55,8 @@ body {
 .game-info {
     color: #FFBB89;
     font-size: 4em;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    /* Neon text effect */
 }
 
 /* Game container layout */
@@ -58,10 +72,10 @@ body {
 /* Styling for individual cards */
 .card {
     position: relative;
-    cursor: url(), auto;
     height: 175px;
     width: 125px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Glowing borders */
 }
 
 /* Styling for card faces and animations */
@@ -138,11 +152,6 @@ body {
     transition: background-color 500ms, font-size 500ms;
 }
 
-/* Styling for small overlay text */
-.overlay-text-small {
-    font-size: .3em;
-}
-
 /* Animation for overlay text visibility */
 .overlay-text.visible {
     display: flex;
@@ -151,7 +160,9 @@ body {
 
 /* Dance animation for matched cards */
 @keyframes dance {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(0)
     }
 

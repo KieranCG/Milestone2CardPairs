@@ -66,13 +66,14 @@ class MemoryMatrix {
         if (this.canFlipCard(card)) {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
-            card.classList.add('visible');
 
             // Check for a card match or mismatch
             if (this.cardToCheck) {
+                card.classList.add('visible'); // Move this line here
                 this.checkForCardMatch(card);
             } else {
                 this.cardToCheck = card;
+                card.classList.add('visible');
             }
         }
     }
