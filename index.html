@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags for character set, viewport, and compatibility -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Link to the external stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Importing the Roboto font from Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Page title -->
     <title>Memory Matrix</title>
   </head>
 
   <body>
+    <!-- Pexels logo linking to their website -->
     <div class="pexels-logo">
       <a href="https://www.pexels.com">
         <img
@@ -23,7 +33,11 @@
         />
       </a>
     </div>
+
+    <!-- Main title -->
     <h1 class="page-title">Memory Matrix</h1>
+
+    <!-- Overlay texts for game start, game over, and victory -->
     <div class="overlay-text visible">Click to Start</div>
     <div id="game-over-text" class="overlay-text">
       GAME OVER
@@ -34,11 +48,14 @@
       <span class="overlay-text-small">Click to Restart</span>
     </div>
 
+    <!-- Game container with information and cards -->
     <div class="game-container">
+      <!-- Information container displaying time and flips -->
       <div class="game-info-container">
         <div class="game-info">Time <span id="time-remaining">100</span></div>
         <div class="game-info">Flips <span id="flips">0</span></div>
       </div>
+      <!-- Individual cards for the game -->
       <div class="card">
         <div class="card-back card-face"></div>
         <div class="card-front card-face" style="background-color: red"></div>
@@ -122,7 +139,7 @@
         <div class="card-front card-face" style="background-color: brown"></div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/pexels-api-wrapper@2.0.1/dist/pexels-api-wrapper.umd.js"></script>
+    <!-- Script tags for the game script -->
     <script type="module" src="assets/scripts/game.js" async></script>
   </body>
 </html>
