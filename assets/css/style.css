@@ -210,11 +210,6 @@ body {
     }
 }
 
-/* Styling for Pexels logo */
-.pexels-logo img {
-    height: 50px;
-}
-
 /* Styling for card fronts */
 .card-front {
     background-color: #FFBB89;
