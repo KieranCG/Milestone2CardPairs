@@ -29,8 +29,10 @@ class MemoryMatrix {
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
 
-        // Fetch a random quote when the game starts
-        this.fetchRandomQuote();
+        // Fetch a random quote and update the container
+    this.fetchRandomQuote().then(quoteText => {
+        this.updateQuotesContainer(quoteText);
+    });
     }
 
     // Method to start the countdown
@@ -132,24 +134,35 @@ class MemoryMatrix {
     }
 
     // Method to fetch a random quote
-    async fetchRandomQuote() {
-        const url = 'https://quotes15.p.rapidapi.com/quotes/random/';
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '29a8e59729msh875a19000269704p1c138fjsn880dfdc38fea',
-                'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
-            }
-        };
-
-        try {
-            const response = await fetch(url, options);
-            const result = await response.json();
-            console.log(result);
-            // You can use the quote data as needed in your game
-        } catch (error) {
-            console.error(error);
+async fetchRandomQuote() {
+    const url = 'https://quotes15.p.rapidapi.com/quotes/random/';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '29a8e59729msh875a19000269704p1c138fjsn880dfdc38fea',
+            'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
         }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+
+        // Extract the quote text from the response
+        const quoteText = result.content;
+
+        // Return the quote text
+        return quoteText;
+    } catch (error) {
+        console.error(error);
+        return null; // Return null in case of an error
+    }
+}
+
+    // Method to update the quotes container with a quote
+    async updateQuotesContainer(quoteText) {
+        const quotesContainer = document.querySelector('.quotes-container');
+        quotesContainer.innerText = quoteText;
     }
 }
 
