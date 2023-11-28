@@ -1,4 +1,4 @@
-/* Global styling */
+    /* Global styling */
 * {
     box-sizing: border-box;
 }
@@ -221,4 +221,42 @@ body {
 .card-front i {
     font-size: 2em;
     /* Adjust the size as needed */
+}
+
+/* Styling for the quotes container */
+.quotes-container {
+    font-size: 1.5em;
+    text-align: center;
+    color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+/* Adding a subtle box shadow for depth */
+.quotes-container {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Styling for the quote text */
+.quotes-text {
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Animation for the quotes container visibility */
+.quotes-container.visible {
+    animation: quotes-fade-in 1s ease-in-out;
+}
+
+/* Fade-in animation for the quotes container */
+@keyframes quotes-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

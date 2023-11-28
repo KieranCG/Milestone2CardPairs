@@ -160,10 +160,13 @@ async fetchRandomQuote() {
 }
 
     // Method to update the quotes container with a quote
-    async updateQuotesContainer(quoteText) {
-        const quotesContainer = document.querySelector('.quotes-container');
-        quotesContainer.innerText = quoteText;
-    }
+async updateQuotesContainer(quoteText) {
+    const quotesContainer = document.querySelector('.quotes-container');
+    const quotesTextElement = quotesContainer.querySelector('.quotes-text');
+
+    quotesTextElement.innerText = quoteText;
+    quotesContainer.classList.add('visible');
+}
 }
 
 // Event listener to initialize the game when the DOM is loaded
