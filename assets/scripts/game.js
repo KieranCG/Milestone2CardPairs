@@ -28,6 +28,9 @@ class MemoryMatrix {
         this.hideCards();
         this.timer.innerText = this.timeRemaining;
         this.ticker.innerText = this.totalClicks;
+
+        // Fetch a random quote when the game starts
+        this.fetchRandomQuote();
     }
 
     // Method to start the countdown
@@ -127,6 +130,27 @@ class MemoryMatrix {
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
+
+    // Method to fetch a random quote
+    async fetchRandomQuote() {
+        const url = 'https://quotes15.p.rapidapi.com/quotes/random/';
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '29a8e59729msh875a19000269704p1c138fjsn880dfdc38fea',
+                'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result);
+            // You can use the quote data as needed in your game
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 // Event listener to initialize the game when the DOM is loaded
@@ -137,10 +161,13 @@ if (document.readyState == 'loading') {
 }
 
 // Function to initialize the game and set up event listeners
-function ready() {
+async function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
     let game = new MemoryMatrix(100, cards);
+
+    // Fetch a random quote when the game is ready
+    await game.fetchRandomQuote();
 
     // Add event listeners to overlays and cards
     overlays.forEach(overlay => {
