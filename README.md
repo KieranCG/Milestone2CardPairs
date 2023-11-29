@@ -1,39 +1,61 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Project Documentation: Memory Matrix
 
-Welcome,
+## Project Rationale
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Project Introduction
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it an engaging and educational experience.
 
-## Codeanywhere Reminders
+### Project Goals and Objectives
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+The primary goal of the project is to create an interactive and enjoyable memory game accessible to a wide audience. Objectives include providing a user-friendly interface, integrating external APIs for additional content, and implementing features that enhance the overall gaming experience.
 
-`python3 -m http.server`
+### Target Audience
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+The target audience includes individuals of varying ages and interests, from casual gamers looking for a quick mental exercise to those interested in memory improvement activities.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+### Scope and Features
 
-`http_server`
+The project includes features such as card flipping animations, victory and game over overlays, a countdown timer, and integration with an external API to fetch random quotes. The scope is limited to creating a standalone Memory Matrix game with the potential for future enhancements.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Development Life Cycle
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### Planning
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Planning phase, including requirements gathering, initial design decisions, and project timeline.
 
-To log into the Heroku toolbelt CLI:
+### Design
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Design decisions, including the user interface design, game mechanics, and architectural considerations.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Implementation
 
----
+Coding phase, highlighting key aspects of JavaScript, HTML, and CSS implementation.
 
-Happy coding!
+### Testing
+
+Testing strategy, including unit testing, integration testing, and user testing.
+
+### Deployment
+
+Steps taken to deploy the game, including hosting considerations.
+
+## Challenges and Solutions
+
+...
+
+## Code Documentation
+
+...
+
+## External Dependencies
+
+...
+
+## User Documentation
+
+...
+
+## Future Improvements
+
+...
