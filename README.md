@@ -4,7 +4,7 @@
 
 ### Project Introduction
 
-The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it an engaging and educational experience. 
+The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it an engaging and educational experience.
 
 ### Project Goals and Objectives
 
@@ -35,6 +35,7 @@ The project includes features such as card flipping animations, victory and game
 - **Activities:**
   - Consider your preferences and expectations as the sole developer and end user.
   - Define technical requirements, including supported platforms and browsers.
+
 1. **Card Flipping:**
    - Players can flip cards to reveal their faces.
    - Cards should flip smoothly with a visual animation.
@@ -134,14 +135,14 @@ The design of game elements and features contributes to an immersive and enjoyab
 
 A diverse set of visual elements, including icons representing animals, adds variety and interest to the card faces. Each card face is carefully designed to be visually distinct.
 
-![Card Faces](path/to/card-faces.png)
+![Card Faces](assets/images/playingcardfacesimage.png "Playing Card Faces Image")
 *Note: Insert an actual screenshot or graphic showcasing card faces.*
 
 ##### Overlay Texts
 
 Overlay texts, such as "Click to Start," "Game Over," and "Victory," provide clear instructions and feedback throughout the game. The neon text effect enhances visibility.
 
-![Overlay Texts](path/to/overlay-texts.png)
+![Overlay Texts](assets/images/overlayimage.png "Overlay Image")
 *Note: Insert an actual screenshot or graphic of overlay texts.*
 
 #### External APIs Integration
@@ -152,14 +153,12 @@ The game incorporates an external API to fetch random quotes, adding an interact
 
 A dedicated container displays random quotes fetched from the external API. This feature aims to entertain and inspire players.
 
-![Quotes Container](path/to/quotes-container.png)
+![Quotes Container](assets/images/quotecontainerimage.png "Quote container image")
 *Note: Insert an actual screenshot or graphic of the quotes container.*
 
 #### Next Steps
 
 The design will continue to evolve based on user feedback and iterative development. The Agile approach allows for ongoing improvements and the addition of new features in response to user needs.
-
-
 
 ### Implementation
 
