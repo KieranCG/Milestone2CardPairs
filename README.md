@@ -6,13 +6,15 @@
 
 The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it an engaging and educational experience.
 
+To view the deployed website click [here](https://kierancg.github.io/Milestone2CardPairs/).
+
 ### Project Goals and Objectives
 
 The primary goal of the project is to create an interactive and enjoyable memory game accessible to a wide audience. Objectives include providing a user-friendly interface, integrating external APIs for additional content, and implementing features that enhance the overall gaming experience.
 
 ### Target Audience
 
-The target audience includes individuals of varying ages and interests, from casual gamers looking for a quick mental exercise to those interested in memory improvement activities.
+The target audience includes individuals of varying ages and interests, from casual gamers looking for a quick mental exercise to those interested in memory improvement activities. But predominantly it was built for myself to demonstrate use of a website enabled Javascript game.
 
 ### Scope and Features
 
@@ -244,11 +246,21 @@ Testing strategy, including unit testing, integration testing, and user testing.
 
 ### Deployment
 
-Steps taken to deploy the game, including hosting considerations.
+The site was created on Codeanywhere then deployed to GitHub pages. To deploy the site:
+
+1. In the GitHub repository, click to Settings.
+2. On the left navagation bar click Pages.
+3. Change the drop down on Branch to 'main' then click save.
+4. Once it has been deployed a link will show at the top with the link to the site.
+
+Click [here](https://github.com/KieranCG/Milestone2CardPairs) to view my Github repository.
 
 ## Challenges and Solutions
 
-...
+The challenges of being a new learner to programming was evident through the coding section of this project. I encountered three main issues.
+1. Firstly a simple coding mistake whereby I was passing the 'ready' function without the parentheses I was passing a reference to the function rather than invoking it immediately. This led to a long time trying to figure out the mistake that could have been spent adding extra features to the site.
+2. The second was a mistake in the order of the code. I was calling the MemoryMatrix constructor before it was being initialised. Again this is understandle due to being a beginner with Javascript and the mistake was rectified.
+3. The last was trying to get the Pexel API to supply card new card images everytime the game was started. However my inexperience was making me invest too much time in trying to make this work so I simplified the game and have added it to the Future Features for the project.
 
 ## Code Documentation
 
