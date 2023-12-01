@@ -221,7 +221,24 @@ The game integrates an external API to fetch random quotes, providing an additio
 
 ### Testing
 
-Testing strategy, including unit testing, integration testing, and user testing.
+Following the Agile Project development method continous testing was carried out during the creation of this project.
+
+| Test Category             | Test Description                                                                        |
+|---------------------------|------------------------------------------------------------------------------------------|
+| Game Initialization      | 1. Start the game and verify card shuffling.<br>2. Check initialization of timer and flips counter. |
+| User Interaction          | 1. Click on various cards to ensure correct flipping.<br>2. Click on overlay texts for appropriate responses. |
+| Game Logic                | 1. Play through the game and verify card matching/mismatching.<br>2. Check "Game Over" and "Victory" conditions. |
+| Timer and Countdown       | 1. Play the game and check if the timer decreases correctly.<br>2. Ensure the game ends on timer reaching zero. |
+| Quotes Container          | 1. Verify quotes container displays a quote on game start.<br>2. Check if the quote changes upon restarting the game. |
+| Responsiveness            | 1. Test the game on different screen sizes for responsiveness.<br>2. Check layout adjustment on smaller screens. |
+| Accessibility             | 1. Use a screen reader to navigate and ensure understandability.<br>2. Test keyboard-only gameplay. |
+| Edge Cases                | 1. Play with minimum and maximum allowed time for boundary issues.<br>2. Test with minimum and maximum number of cards for scalability. |
+| Error Handling            | 1. Trigger intentional errors (e.g., fetch error for quotes) and check graceful handling. |
+| Cross-Browser Testing     | 1. Test the game on different browsers (Chrome, Firefox, Safari, Edge) for compatibility. |
+| UI and UX                 | 1. Evaluate overall look and feel of the game.<br>2. Check if neon and glowing effects enhance the visual experience. |
+| Performance               | 1. Monitor resource usage and responsiveness during gameplay.                            |
+
+
 
 ### Deployment
 
