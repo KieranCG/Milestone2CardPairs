@@ -55,6 +55,7 @@ describe('MemoryMatrix class', () => {
             const cards = [/* mock cards array */];
             const game = new MemoryMatrix(100, cards);
 
+            // Ensure that the totalTime and cardsArray are set correctly
             expect(game.totalTime).toBe(100);
             expect(game.cardsArray).toBe(cards);
         });
@@ -70,6 +71,7 @@ describe('MemoryMatrix class', () => {
 
             const result = game.canFlipCard(cards[0]);
 
+            // Ensure that the method returns true when conditions are met
             expect(result).toBe(true);
         });
 
@@ -80,6 +82,7 @@ describe('MemoryMatrix class', () => {
 
             const result = game.canFlipCard(cards[0]);
 
+            // Ensure that the method returns false when the game is busy
             expect(result).toBe(false);
         });
     });
