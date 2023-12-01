@@ -174,28 +174,7 @@ The implementation of the Memory Matrix game involves the use of various technol
 
 The project follows a well-organized folder structure for easy navigation and maintenance. Here's an overview:
 
-Memory-Matrix-Game/
-│
-├── assets/
-│ ├── css/
-│ │ └── style.css
-│ │
-│ ├── images/
-│ │ └── favicon/
-│ │ ├── apple-touch-icon.png
-│ │ ├── favicon-32x32.png
-│ │ └── favicon-16x16.png
-│ │
-│ ├── scripts/
-│ │ └── game.js
-│ │
-│ └── fonts/
-│ └── (font files, if any)
-│
-├── index.html
-│
-└── README.md
-
+![Folder Structure](assets/images/folderstructure.png "Folder structure image")
 
 #### HTML Structure
 
@@ -258,22 +237,94 @@ Click [here](https://github.com/KieranCG/Milestone2CardPairs) to view my Github 
 ## Challenges and Solutions
 
 The challenges of being a new learner to programming was evident through the coding section of this project. I encountered three main issues.
-1. Firstly a simple coding mistake whereby I was passing the 'ready' function without the parentheses I was passing a reference to the function rather than invoking it immediately. This led to a long time trying to figure out the mistake that could have been spent adding extra features to the site.
+1. Firstly a simple coding mistake whereby I was passing the 'ready' function without the parentheses. I was passing a reference to the function rather than invoking it immediately. This led to a long time trying to figure out the mistake that could have been spent adding extra features to the site.
 2. The second was a mistake in the order of the code. I was calling the MemoryMatrix constructor before it was being initialised. Again this is understandle due to being a beginner with Javascript and the mistake was rectified.
 3. The last was trying to get the Pexel API to supply card new card images everytime the game was started. However my inexperience was making me invest too much time in trying to make this work so I simplified the game and have added it to the Future Features for the project.
 
-## Code Documentation
-
-...
-
 ## External Dependencies
 
-...
+The Memory Matrix game relies on the following external dependencies to enhance its functionality and features.
+
+### Font Awesome
+
+- **Description:** Font Awesome provides scalable vector icons that can be customized and styled using CSS. In this project, Font Awesome icons are used for card representations.
+
+- **Link:** [Font Awesome](https://fontawesome.com/)
+
+### Google Fonts - Roboto
+
+- **Description:** The Roboto font from Google Fonts is used to enhance the overall typography and readability of the game.
+
+- **Link:** [Google Fonts - Roboto](https://fonts.google.com/specimen/Roboto)
+
+### RapidAPI - Quotes15
+
+- **Description:** The game fetches random quotes from the Quotes15 API hosted on RapidAPI. This external service adds an interactive element to the game by providing diverse and engaging quotes during gameplay.
+
+- **Link:** [RapidAPI - Quotes15](https://rapidapi.com/)
+
+### JavaScript (ES6) Modules
+
+- **Description:** The game utilizes JavaScript ES6 modules for modular and organized code. This helps in maintaining a clean and scalable codebase.
+
+- **Link:** [JavaScript ES6 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+
+### Font Awesome Icons
+
+- **Description:** Specific Font Awesome icons are used as visual representations on the card faces, adding a thematic and visually appealing aspect to the game.
+
+- **Link:** [Font Awesome Icons](https://fontawesome.com/icons)
+
 
 ## User Documentation
 
-...
+Welcome to the Memory Matrix game! This section provides instructions on how to play and enjoy the game.
+
+### Getting Started
+
+Navigate to the website using your preferred browser with this [link](https://kierancg.github.io/Milestone2CardPairs/).
+
+### How to Play
+
+1. **Game Start:**
+   - Click on the "Click to Start" overlay text to initiate the game.
+
+2. **Game Objective:**
+   - The goal is to match pairs of cards based on their background colors and icons.
+
+3. **Card Flipping:**
+   - Click on a card to flip it and reveal its symbol.
+   - Click on another card to find a matching pair.
+
+4. **Game Information:**
+   - Track your progress with the time remaining and the number of flips displayed at the top.
+
+5. **Game Over:**
+   - The game ends when the timer reaches zero. Click "Game Over" to restart.
+
+6. **Victory:**
+   - Match all pairs before the timer runs out to achieve victory. Click "Victory" to restart.
+
+7. **Quotes Container:**
+   - Enjoy random quotes fetched during gameplay. Quotes add an extra layer of fun and motivation.
+
+### Responsive Design
+
+- The game is designed to be fully responsive, ensuring an optimal experience on various devices, including desktops, tablets, and mobile phones.
+
+### Accessibility
+
+- The game follows UX design principles and accessibility guidelines to provide an inclusive gaming experience.
+
+### External APIs
+
+- The game integrates an external API to fetch random quotes, enhancing the gaming experience.
+
+### Have Fun!
+
+Explore the colorful world of Memory Matrix, test your memory skills, and enjoy the game!
+
 
 ## Future Improvements
 
-...
+My plan for the next part of the project is to integrate an api that takes images from an api and loads a fresh set everytime a new game is run. This will increase replayability.
