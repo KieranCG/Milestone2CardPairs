@@ -8,6 +8,10 @@ The **Memory Matrix** game is designed to challenge and enhance the memory skill
 
 To view the deployed website click [here](https://kierancg.github.io/Milestone2CardPairs/).
 
+### User Story
+
+"As a casual gamer seeking an entertaining and memory-challenging experience, I want to be able to easily start the Memory Matrix game, flip cards to find matching pairs, and enjoy a visually appealing interface with engaging features. By playing this game, I aim to enhance my memory skills while having fun with the vibrant card faces, creating an enjoyable and educational gaming experience."
+
 ### Project Goals and Objectives
 
 The primary goal of the project is to create an interactive and enjoyable memory game accessible to a wide audience. Objectives include, providing a user-friendly interface, integrating external APIs for additional content, and implementing features that enhance the overall gaming experience.
@@ -78,6 +82,8 @@ Content requirements specify the specific elements, visuals, and information nee
   - Determine the visual style, including colors, fonts, and the overarching theme.
   - Decide on game mechanics and interactions.
   - Consider the potential use of external APIs, such as fetching random quotes.
+
+![Initial Design](assets/images/initialdesignimage.png "Initial Design Image")
 
 #### Project Timeline
 
