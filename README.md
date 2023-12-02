@@ -238,7 +238,23 @@ Following the Agile Project development method continous testing was carried out
 | UI and UX                 | 1. Evaluate overall look and feel of the game.<br>2. Check if neon and glowing effects enhance the visual experience. |
 | Performance               | 1. Monitor resource usage and responsiveness during gameplay.                            |
 
+#### HTML Validator
+The website passes W3 validator with no issues after some redundant trailing slashes were removed.
 
+![HTML Validator](assets/images/htmlvalidator.png "W3 Valid Image")
+
+#### CSS Validator
+The website passes W3 validator with no issues.
+
+![CSS Validator](assets/images/cssvalidatorimage.png "CSS Validator Image")
+
+#### Javascript Validator
+Javascript passed through JSHint testing, though it did highlight a reliance on ES6 and ES8.
+
+#### Lighthouse Testing
+The website passed the Lighthouse testing.
+
+![Lighthouse results image](assets/images/lighthousetesting.png "Lighthouse results image")
 
 ### Deployment
 
