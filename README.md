@@ -4,13 +4,13 @@
 
 ### Project Introduction
 
-The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it an engaging and educational experience.
+The **Memory Matrix** game is designed to challenge and enhance the memory skills of its users. The idea stemmed from the recognition of the cognitive benefits associated with memory games, making it both engaging and educational.
 
 To view the deployed website click [here](https://kierancg.github.io/Milestone2CardPairs/).
 
 ### Project Goals and Objectives
 
-The primary goal of the project is to create an interactive and enjoyable memory game accessible to a wide audience. Objectives include providing a user-friendly interface, integrating external APIs for additional content, and implementing features that enhance the overall gaming experience.
+The primary goal of the project is to create an interactive and enjoyable memory game accessible to a wide audience. Objectives include, providing a user-friendly interface, integrating external APIs for additional content, and implementing features that enhance the overall gaming experience.
 
 ### Target Audience
 
@@ -75,7 +75,7 @@ Content requirements specify the specific elements, visuals, and information nee
 - **Objective:** Make key design decisions to guide the solo development process.
 - **Activities:**
   - Design the user interface with a focus on personal usability and accessibility.
-  - Determine the visual style, including colors, fonts, and the overall theme.
+  - Determine the visual style, including colors, fonts, and the overarching theme.
   - Decide on game mechanics and interactions.
   - Consider the potential use of external APIs, such as fetching random quotes.
 
@@ -256,6 +256,11 @@ The website passed the Lighthouse testing.
 
 ![Lighthouse results image](assets/images/lighthousetesting.png "Lighthouse results image")
 
+#### Wave Testing
+The website passed the Wave testing.
+
+![Wave results image](assets/images/wavetestingimage.png "Wave results image")
+
 ### Deployment
 
 The site was created on Codeanywhere then deployed to GitHub pages. To deploy the site:
@@ -269,7 +274,7 @@ Click [here](https://github.com/KieranCG/Milestone2CardPairs) to view my Github 
 
 ## Challenges and Solutions
 
-The challenges of being a new learner to programming was evident through the coding section of this project. I encountered three main issues.
+The challenges of being a new learner to programming were evident throughout the coding section of this project. I encountered three main issues.
 1. Firstly a simple coding mistake whereby I was passing the 'ready' function without the parentheses. I was passing a reference to the function rather than invoking it immediately. This led to a long time trying to figure out the mistake that could have been spent adding extra features to the site.
 2. The second was a mistake in the order of the code. I was calling the MemoryMatrix constructor before it was being initialised. Again this is understandle due to being a beginner with Javascript and the mistake was rectified.
 3. The last was trying to get the Pexel API to supply card new card images everytime the game was started. However my inexperience was making me invest too much time in trying to make this work so I simplified the game and have added it to the Future Features for the project.
@@ -315,7 +320,7 @@ Welcome to the Memory Matrix game! This section provides instructions on how to 
 
 ### Getting Started
 
-Navigate to the website using your preferred browser with this [link](https://kierancg.github.io/Milestone2CardPairs/).
+Navigate to the website using your preferred browser by clicking on this [link](https://kierancg.github.io/Milestone2CardPairs/).
 
 ### How to Play
 
@@ -360,4 +365,4 @@ Explore the colorful world of Memory Matrix, test your memory skills, and enjoy 
 
 ## Future Improvements
 
-My plan for the next part of the project is to integrate an api that takes images from an api and loads a fresh set everytime a new game is run. This will increase replayability.
+My plan for the next part of the project is to integrate an API that takes images from an API like Pexel and loads a fresh set everytime a new game is run. This will increase replayability.
