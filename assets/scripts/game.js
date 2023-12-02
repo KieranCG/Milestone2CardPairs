@@ -1,6 +1,9 @@
 class MemoryMatrix {
     // Constructor to initialize the game with totalTime and cards
     constructor(totalTime, cards) {
+        if (typeof totalTime !== 'number' || !Array.isArray(cards)) {
+            throw new Error('Invalid input data for MemoryMatrix constructor');
+        }
         this.cardsArray = cards;
         this.totalTime = totalTime;
         this.timeRemaining = totalTime;
