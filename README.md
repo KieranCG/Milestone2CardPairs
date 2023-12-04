@@ -227,7 +227,7 @@ The game integrates an external API to fetch random quotes, providing an additio
 
 ### Testing
 
-Following the Agile Project development method continous testing was carried out during the creation of this project.
+Following the Agile Project development method continous testing was carried out during the creation of this project. The below tests were carried out after every interation of a code change and external testers were asked to follow these as well.
 
 | Test Category             | Test Description                                                                        |
 |---------------------------|------------------------------------------------------------------------------------------|
