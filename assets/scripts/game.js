@@ -1,3 +1,10 @@
+// Check if the current page is the main index page, then redirect if needed
+if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    document.addEventListener('DOMContentLoaded', ready);
+} else {
+    window.location.href = '404.html';
+}
+
 class MemoryMatrix {
     // Constructor to initialize the game with totalTime and cards
     constructor(totalTime, cards) {
