@@ -2,7 +2,14 @@
 if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     document.addEventListener('DOMContentLoaded', ready);
 } else {
-    window.location.href = '404.html';
+    // Check if the main game elements are present before redirect.
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.getElementById('time-remaining') && document.getElementById('flips')) {
+            ready();
+        } else {
+            window.location.href = '404.html';
+        }
+    });
 }
 
 class MemoryMatrix {
