@@ -135,6 +135,10 @@ class MemoryMatrix {
     canFlipCard(card) {
         return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     }
+    // Checks the game is not busy.
+    // This part checks if the card clicked is not already matched.
+    // This condition ensures that the clicked card is not the same card that is currently being checked for a match.
+    // So you can only flip a card if all conditions are true.
 
     // Method to fetch a random quote
 async fetchRandomQuote() {
