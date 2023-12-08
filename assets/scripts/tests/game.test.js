@@ -8,6 +8,7 @@ const { sum, ready, MemoryMatrix } = require('../game');
 let overlays, cards, game;
 
 // Set up the DOM
+// Code template from CodeInstitute
 beforeAll(() => {
     // Read the contents of 'index.html' and write to the DOM
     let fs = require("fs");
@@ -17,7 +18,7 @@ beforeAll(() => {
     document.close();
 });
 
-// Baseline test for peace of mind.
+// Baseline test for checking the environment is linked.
 test('adds 1 + 2 to equal 3', () => {
     expect(sum(1, 2)).toBe(3);
 });
